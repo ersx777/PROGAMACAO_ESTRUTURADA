@@ -27,21 +27,24 @@ int main(void){
             }
         }
         
-        
-        
-        
-        
-    
-        /*
-        
-        //aqui é onde o usuário irá inserir os dados de consumo energético
-        for(i=0;i<3;i++){
-            printf("Digite o consumo do setor %d:\n", i+1);
-            for(j=0;j<5;j++){
-                printf("Digite o consumo do dia %d: ", j+1);
-                scanf("%f", &consumo[i][j]);
-            }
+        switch(opcao){
+            case 1:
+                
+                //aqui é onde o usuário irá inserir os dados de consumo energético
+                for(i=0;i<3;i++){
+                    printf("Digite o consumo do setor %d:\n", i+1);
+                    for(j=0;j<5;j++){
+                        printf("Digite o consumo do dia %d: ", j+1);
+                        fgets(respostas,sizeof(respostas),stdin);
+                        consumo[i][j]=atof(respostas);
+                    }
+                }
+                
+                break;
         }
+        
+
+        /*
         //painel de resultados
         for(i=0;i<3;i++){
             for(j=0;j<5;j++){
