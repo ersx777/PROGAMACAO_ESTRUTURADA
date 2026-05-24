@@ -7,6 +7,7 @@ int main(void){
     int setormaior=0,diamaior=0;
     int i, j;
     int opcao=0;
+    char respostas[10]={0};
 
     while(opcao!=4){
         printf("===========RELATORIO DE CONSUMO ENERGETICO===========");
@@ -16,10 +17,23 @@ int main(void){
         printf("3.Setor mais energetico\n");
         printf("4.Sair\n\n");
 
-        scanf("%d",&opcao);
+        opcao=0;
+        while(opcao==0){
+            fgets(respostas,sizeof(respostas),stdin);
+            opcao=atoi(respostas);
+            if(opcao<0||opcao==0||opcao>4){
+                printf("Escolha uma opcao valida\n");
+                opcao=0;
+            }
+        }
+        
+        
+        
+        
         
     
-
+        /*
+        
         //aqui é onde o usuário irá inserir os dados de consumo energético
         for(i=0;i<3;i++){
             printf("Digite o consumo do setor %d:\n", i+1);
@@ -35,6 +49,7 @@ int main(void){
             }
             printf("\n");
         }
+        */
     }
     return 0;
 }
