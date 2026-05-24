@@ -1,5 +1,7 @@
 //código do comsumo energetico
 #include <stdio.h>
+#include <stdlib.h>
+
 int main(void){
     float consumo[3][5]={0};
     float mediasetor=0,totalgeral=0;
@@ -10,7 +12,7 @@ int main(void){
     char respostas[10]={0};
 
     while(opcao!=4){
-        printf("===========RELATORIO DE CONSUMO ENERGETICO===========");
+        printf("\n===========RELATORIO DE CONSUMO ENERGETICO===========\n");
         printf("\n\nInsira uma opcao\n");
         printf("1.Inserir consumo\n");
         printf("2.Matriz de consumo\n");
@@ -26,7 +28,8 @@ int main(void){
                 opcao=0;
             }
         }
-        
+        printf("\n");
+
         switch(opcao){
             case 1:
                 
@@ -37,21 +40,29 @@ int main(void){
                         printf("Digite o consumo do dia %d: ", j+1);
                         fgets(respostas,sizeof(respostas),stdin);
                         consumo[i][j]=atof(respostas);
+                        // printf("%f",consumo[i][j]);
                     }
                 }
                 
                 break;
+            case 2:
+            //matriz de consumo
+                for(i=0;i<3;i++){
+                    for(j=0;j<5;j++){
+                        printf("%1.f\t", consumo[i][j]);
+                    }
+                    printf("\n");
+                }
+                printf("\n");
+                break;
+
         }
+
         
 
         /*
         //painel de resultados
-        for(i=0;i<3;i++){
-            for(j=0;j<5;j++){
-                printf("%1.f\t", consumo[i][j]);
-            }
-            printf("\n");
-        }
+        
         */
     }
     return 0;
