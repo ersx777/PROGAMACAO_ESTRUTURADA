@@ -9,13 +9,14 @@ int main(void){
     int i, j;
     int opcao=0;
     char respostas[10]={0};
+    float media[3],somasetor=0;
 
     while(opcao!=4){
         printf("\n===========RELATORIO DE CONSUMO ENERGETICO===========\n");
         printf("\n\nInsira uma opcao\n");
         printf("1.Inserir consumo\n");
         printf("2.Matriz de consumo\n");
-        printf("3.Setor mais energetico\n");
+        printf("3.Setor mais eficiente\n");
         printf("4.Sair\n\n");
 
         opcao=0;
@@ -58,7 +59,7 @@ int main(void){
             case 3:
             //setor mais energetico
             //somasetor/5 =mediasetor
-                float media[3],somasetor=0;
+              
 
                 for(i=0;i<3;i++){
                     somasetor=0;
@@ -66,14 +67,25 @@ int main(void){
                     for(j=0;j<5;j++){
                         somasetor+=consumo[i][j];
                     }
-                    media[i]=somasetor/5 //calculo da média
-                    
-                  
+                    media[i]=somasetor/5;//calculo da média
                 }
-
-
+                if(media[0]==0&&media[1]==0&&media[2]==0){
+                    printf("Valores nao atrbuidos, impossivel obter a media\n");
+                }
+                else if(media[0]<=media[1]&&media[0]<=media[2]){
+                    printf("O setor mais eficente é o setor 1\n");
+                }
+                else if(media[1]<=media[0]&&media[1]<=media[2]){
+                    printf("O setor mais eficente é o setor 2\n");
+                }
+                else{
+                    printf("O setor mais eficente é o setor 3\n");
+                }
+                break;
+            case 4:
+                printf("Voce escolheu sair!Adeus...");
+                break;
         }
-
     }
     return 0;
 }
