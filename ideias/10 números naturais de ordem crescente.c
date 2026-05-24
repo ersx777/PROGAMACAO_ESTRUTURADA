@@ -1,0 +1,1 @@
+//progama que lê 10 números naturais e os imprime em ordem crescente
