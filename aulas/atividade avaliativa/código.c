@@ -4,7 +4,6 @@
 
 int main(void){
     float consumo[3][5]={0};
-    float mediasetor=0,totalgeral=0;
 
     int setormaior=0,diamaior=0;
     int i, j;
@@ -54,16 +53,27 @@ int main(void){
                     printf("\n");
                 }
                 printf("\n");
+
                 break;
+            case 3:
+            //setor mais energetico
+            //somasetor/5 =mediasetor
+                float media[3],somasetor=0;
+
+                for(i=0;i<3;i++){
+                    somasetor=0;
+
+                    for(j=0;j<5;j++){
+                        somasetor+=consumo[i][j];
+                    }
+                    media[i]=somasetor/5 //calculo da média
+                    
+                  
+                }
+
 
         }
 
-        
-
-        /*
-        //painel de resultados
-        
-        */
     }
     return 0;
 }
