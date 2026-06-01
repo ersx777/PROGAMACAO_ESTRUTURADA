@@ -20,14 +20,9 @@ int main(void){
         for(n=0;n<3;n++){
             printf("\nInsira a nota %d: ",n+1);
             scanf("%f",&notas[a][n]);
-        }
-
-        
-        
+        }   
     }
-
     //printf("\nA media das notas e: %f", mediaf(n1,n2,n3));
-
     return 0;
 }
 /*criar um programa,para calcular a média das notas de 5 alunoos.
