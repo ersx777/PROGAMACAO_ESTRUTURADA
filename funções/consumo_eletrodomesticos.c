@@ -9,21 +9,47 @@ Somente 3.
 
 int main(void){
     int opcao=0;
-    float consumo[3][3]={0};
-    float consumototal;
-    float valordafatura;
-    while(opcao=!4){
+    int i,j;
+    float consumo[3]={0};
+    char tipodeeletro[3][20];
+    float consumototal=0;
+    float valordafatura=0;
+    int status_leitura;
+    while(opcao!=4){
         printf("\nEscolha uma opcao:\n");
         printf("1.Inserir consumo dos eletros\n");
         printf("2.Obter consumo total(mes)\n");
         printf("3.Valor total da fatura\n");
-        print("4.Sair\n");
-        scanf("%d",&opcao);
+        printf("4.Sair\n");
+        scanf(" %d",&opcao);
         if(opcao<0||opcao==0||opcao>4){
                 printf("Escolha uma opcao valida\n");
                 opcao=0;
             }
-    
-    }
-    
+      switch(opcao){
+        case 1:
+        for(i=0; i<3; i++){
+            // Pede o NOME do eletrodoméstico normalmente
+            printf("Digite o tipo de eletrodomestico %d: \n", i+1);
+            scanf(" %s", tipodeeletro[i]);
+
+            do {
+                printf("Digite o consumo do eletrodomestico em kWh %d: \n", i+1);
+                status_leitura = scanf("%f", &consumo[i]);
+                
+                // Limpa o teclado para evitar o loop infinito se o usuario digitar letra
+                while(getchar() != '\n'); 
+
+                if(status_leitura != 1 || consumo[i] < 0){
+                    printf("Valor invalido! Digite um numero que seja positivo.\n");
+                }
+            } while(status_leitura != 1 || consumo[i] < 0);
+        }
+        break; 
+
+    case 2:
+        // Aqui vai entrar a sua lógica de soma!
+        break;
+        }            
+    }   
 }
