@@ -8,16 +8,25 @@ Criar um programa em C que realize as seguintes tarefas:
 3. **Saída (Fatura Financeira):** Mostrar o valor total da fatura, considerando que o custo de 1 kWh é de **R$ 1,25**.
 
 */
+float consumo[3]={0};
+
+float obter_consumo(void) {
+    int i;
+    float consumototal=0;   //consumo mensal
+    for(i=0;i<3;i++){
+        consumototal=consumo[i]+consumototal;
+    }
+    return consumototal;
+}
 
 int main(void){
     int i;
-    float consumo[3]={0};
-    float consumototal=0;//consumo mensal
+    float fatura=0;
     char tipodeeletro[3][20];
     int opcao = 0;
 
     while (opcao != 4){
-        printf("===============CONSUMO ENERGETICO===============\n");
+        printf("\n===============CONSUMO ENERGETICO===============\n");
         printf("Escolha um opcao: \n");
         printf("1.Inserir consumo\n");
         printf("2.Consumo mensal\n");
@@ -36,12 +45,22 @@ int main(void){
                     scanf("%f",&consumo[i]);
                 }
             break;
+
             case 2:
-                consumototal=0;
+                // obter_consumo();
                 for(i=0;i<3;i++){
-                    consumototal=consumo[i]+consumototal;
+                    printf("%s:%.2f kwh\n",tipodeeletro[i],consumo[i]);
                 }
-                printf("O valor do consumo total e: %f\n",consumototal);
+                printf("O valor do consumo total e: %.2f\n", obter_consumo());
+            break;
+
+            case 3:
+                fatura=obter_consumo()*1.25;
+                printf("A fatura de consumo mensal e: %.2f\n",fatura);
+            break;
+
+            case 4:
+                printf("Encerrando...\n");
             break;
         }
     }
