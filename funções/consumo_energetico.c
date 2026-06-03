@@ -11,8 +11,8 @@ Criar um programa em C que realize as seguintes tarefas:
 
 int main(void){
     int i;
-    float consumo[3];
-    float consumototal;
+    float consumo[3]={0};
+    float consumototal=0;//consumo mensal
     char tipodeeletro[3][20];
     int opcao = 0;
 
@@ -35,6 +35,13 @@ int main(void){
                     printf("Insira o consumo do eletrodomestico: \n");
                     scanf("%f",&consumo[i]);
                 }
+            break;
+            case 2:
+                consumototal=0;
+                for(i=0;i<3;i++){
+                    consumototal=consumo[i]+consumototal;
+                }
+                printf("O valor do consumo total e: %f\n",consumototal);
             break;
         }
     }
