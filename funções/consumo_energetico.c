@@ -27,5 +27,15 @@ int main(void){
         if (opcao == 0 || opcao < 0 || opcao > 4){
             printf("DIgite um opcao valida!\n");
         }
+        switch(opcao){
+            case 1:
+                for(i=0;i<3;i++){
+                    printf("Insira o tipo de eletrodomestico: \n");
+                    scanf("%s",tipodeeletro[i]);
+                    printf("Insira o consumo do eletrodomestico: \n");
+                    scanf("%f",&consumo[i]);
+                }
+            break;
+        }
     }
 }
