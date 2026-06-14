@@ -3,14 +3,13 @@
 
 int main(void) {
     int opcao = 0;
-    
-    int i = 0, j = 0,c=0;
-    float parede[4]={0};     // Vetor para as 4 paredes
-    float perimetro = 0; 
-    char comodo[10][20]={0,0};
+    int i = 0, j = 0, c = 0;
+    float parede[4] = {0};
+    float perimetro = 0;
+    char comodo[10][20] = {0};
 
     while (opcao != 2) {
-        printf("\n====================\n");
+        printf("\n==============================\n");
         printf("1. Dimensionar tomadas\n");
         printf("2. Sair\n");
         scanf("%d", &opcao);
@@ -20,35 +19,41 @@ int main(void) {
         }
 
         if (opcao == 1) {
-            opcao=0;
+            opcao = 0;
             // 1. Recebe os dados das 4 paredes
-            while(1){
-                printf("Insira o nome do comodo: %d: \n",c+1);
-                scanf("%s",&comodo[i]);
-                if(comodo[c][0]=='0'){
+            while(1) {
+                printf("\nInsira o nome do comodo %d (ou digite 0 para voltar): \n", c + 1);
+                scanf("%s", comodo[c]);
+
+                // Condição de parada
+                if(comodo[c][0] == '0') {
                     break;
                 }
-                else{
-                    c=c+1;
-                    for (i = 0; i < 4; i++) {
-                        printf("Digite o tamanho da parede: %d: \n", i + 1);
-                        scanf("%f", &parede[i]);
-                        }
-                    }
 
+                // Zera o perímetro ANTES de começar a somar as paredes deste cômodo
+                perimetro = 0; 
+
+                // Lê o tamanho das 4 paredes
+                for (i = 0; i < 4; i++) {
+                    printf("Digite o tamanho da parede %d: \n", i + 1);
+                    scanf("%f", &parede[i]);
+                }
+
+                printf("\n");
+                
                 // 2. Imprime os tamanhos e soma o perímetro
                 for (j = 0; j < 4; j++) {
                     printf("O tamanho da parede %d e: %.2f \n", j + 1, parede[j]);
-                    perimetro += parede[j]; // Vai somando cada parede ao total
+                    perimetro += parede[j]; // Vai somando cada parede ao total do cômodo atual
                 }
 
-                // 3. Imprime o resultado final
-                printf("O perimetro total e: %.2f \n", perimetro);
-            }   
-            perimetro = 0; // Zera o perímetro antes de somar
-
+                // 3. Imprime o resultado final do cômodo atual
+                printf("\nO perimetro total do comodo '%s' e: %.2f \n", comodo[c], perimetro);
+                
+                c++; // Incrementa para o próximo cômodo
+            }
         }
     }
-    
+
     return 0;
 }
