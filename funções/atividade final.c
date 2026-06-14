@@ -5,13 +5,11 @@ int main(void) {
     int opcao = 100;
     int i = 0, j = 0, c = 0;
     
-    // Aumentei o array para 5 para evitar um pequeno bug na linha do "if(parede[i]!=0)"
-    // quando o laço terminar as 4 paredes e o 'i' valer 4.
+
     float parede[5] = {0}; 
     float perimetro[10] = {0};
     char comodo[10][20] = {0};
     
-    // NOVO ARRAY: Guarda a resposta se é cozinha (1) ou não (2) para cada cômodo 'c'
     int eh_cozinha[10] = {0}; 
 
     while (opcao != 0) {
@@ -31,18 +29,18 @@ int main(void) {
 
         if (opcao == 1) {
             opcao = 100;
-            // 1. Recebe os dados das 4 paredes
+            // Dados das 4 paredes
             while(1) {
                 system("cls || clear"); // Limpa a tela
                 
-                // --- NOVA PERGUNTA INSERIDA AQUI ANTES DO NOME ---
+                // VERIFICA O TIPO DE COMODO
                 printf("\nO comodo %d a ser dimensionado e uma cozinha?\n", c + 1);
                 printf("1 - Sim\n");
                 printf("2 - Nao\n");
                 printf("0 - Encerrar / Voltar\n");
                 scanf("%d", &eh_cozinha[c]);
 
-                // Mesma lógica de parada que você criou
+                // CONDICAO DE PARADA
                 if (eh_cozinha[c] == 0) {
                     if (c == 0) {
                         break;
@@ -57,7 +55,7 @@ int main(void) {
                 printf("\nInsira o nome do comodo %d (ou digite 0 para encerrar): \n", c + 1);
                 scanf("%s", comodo[c]);
 
-                // Condicao de parada
+                // CONDICAO DE PARADA
                 if(comodo[c][0] == '0') {
                     if(c == 0) {
                         break;
@@ -71,7 +69,7 @@ int main(void) {
                 // Zera o perimetro ANTES de comecar a somar as paredes deste comodo
                 perimetro[c] = 0;
 
-                // Le o tamanho das 4 paredes
+            
                 for (i = 0; i < 4; i++) {
                     system("cls || clear"); 
                     printf("Comodo: %s\n", comodo[c]);
@@ -90,13 +88,13 @@ int main(void) {
                 printf("\n");
 
                 if (i == 4 || parede[i] != 0) {
-                    // 2. Imprime os tamanhos e soma o perimetro
+                    
                     for (j = 0; j < 4; j++) {
                         printf("O tamanho da parede %d e: %.2f \n", j + 1, parede[j]);
-                        perimetro[c] += parede[j]; // Vai somando cada parede ao total do comodo atual
+                        perimetro[c] += parede[j]; // Vai somando cada parede ao total do comodo atual(SOMA DO PERIMETRO P/ COMODO)
                     }
 
-                    // 3. Imprime o resultado final do comodo atual se houver paredes dimensionadas
+                    // PERIMETRO
                     printf("\nO perimetro total do comodo '%s' e: %.2f \n", comodo[c], perimetro[c]);
                     c++; // Incrementa para o proximo comodo
                     printf("\npressione enter para continuar.\n");
@@ -119,13 +117,15 @@ int main(void) {
                     printf("\n%d. %s\n", i + 1, comodo[i]);
                     printf("   Perimetro: %.2f\n", perimetro[i]);
                     
-                    // --- CÁLCULO DE TOMADAS ATUALIZADO COM IF/ELSE ---
+                    //CÁLCULO DE TOMADAS
                     int tomadas_calculadas = 0;
                     
-                    // Verifica no novo array se a resposta foi 1 (Sim, é cozinha)
+                    // VerifA se a resposta foi 1 (Sim, é cozinha)
                     if (eh_cozinha[i] == 1) {
                         tomadas_calculadas = (int)(perimetro[i] / 3.5);
-                    } else {
+                    } 
+                    //Calculo para comodos normais
+                    else {
                         tomadas_calculadas = (int)(perimetro[i] / 5.0);
                     }
                     
