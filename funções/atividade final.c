@@ -7,6 +7,7 @@ int main(void) {
     float parede[4] = {0};
     float perimetro = 0;
     char comodo[10][20] = {0};
+    int eh_cozinha = 0; // Nova variável para a pergunta de Sim ou Não
 
     while (opcao != 2) {
         printf("\n==============================\n");
@@ -20,17 +21,24 @@ int main(void) {
 
         if (opcao == 1) {
             opcao = 0;
-            // 1. Recebe os dados das 4 paredes
+            
             while(1) {
-                printf("\nInsira o nome do comodo %d (ou digite 0 para voltar): \n", c + 1);
-                scanf("%s", comodo[c]);
+                // Pergunta de SIM ou NÃO antes de tudo
+                printf("\nO comodo a ser dimensionado e uma cozinha?\n");
+                printf("1 - Sim\n");
+                printf("2 - Nao\n");
+                printf("0 - Voltar ao menu principal\n");
+                scanf("%d", &eh_cozinha);
 
-                // Condição de parada
-                if(comodo[c][0] == '0') {
+                // Condição de parada mudou para a opção 0 aqui
+                if(eh_cozinha == 0) {
                     break;
                 }
 
-                // Zera o perímetro ANTES de começar a somar as paredes deste cômodo
+                // Agora pede o nome do cômodo normalmente
+                printf("\nInsira o nome do comodo %d: \n", c + 1);
+                scanf("%s", comodo[c]);
+
                 perimetro = 0; 
 
                 // Lê o tamanho das 4 paredes
@@ -41,14 +49,23 @@ int main(void) {
 
                 printf("\n");
                 
-                // 2. Imprime os tamanhos e soma o perímetro
+                // Imprime os tamanhos e soma o perímetro
                 for (j = 0; j < 4; j++) {
                     printf("O tamanho da parede %d e: %.2f \n", j + 1, parede[j]);
-                    perimetro += parede[j]; // Vai somando cada parede ao total do cômodo atual
+                    perimetro += parede[j]; 
                 }
 
-                // 3. Imprime o resultado final do cômodo atual
                 printf("\nO perimetro total do comodo '%s' e: %.2f \n", comodo[c], perimetro);
+                
+                // VERIFICAÇÃO SIMPLES (Sim ou Não)
+                if (eh_cozinha == 1) {
+                    // O que será feito se SIM (for cozinha)
+                    printf("-> Aqui entrara a logica para a COZINHA.\n");
+                } 
+                else {
+                    // O que será feito se NÃO (outros cômodos)
+                    printf("-> Aqui entrara a logica para os OUTROS COMODOS.\n");
+                }
                 
                 c++; // Incrementa para o próximo cômodo
             }
