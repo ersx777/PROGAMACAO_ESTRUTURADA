@@ -5,8 +5,8 @@
 int main(void) {
     int opcao = 100;
     int i = 0, j = 0, c = 0, quantidade=0, cozinha=0;
-    // As cozinhas ficam nos primeiros índices dos comodos
     
+
     float parede[5] = {0}; 
     float perimetro[10] = {0};
     char comodo[10][20] = {0};
@@ -31,33 +31,31 @@ int main(void) {
         if (opcao == 1) {
             opcao = 100;
 
-            system("cls || clear"); // Limpa a tela
-            
-            // VERIFICA O TIPO DE COMODO
-            printf("\nquantos comodos serao adicionados?\n");
-            scanf("%d",&quantidade);
-            printf("quantos desses comodos sao cozinhas?\n");
-            scanf("%d",&cozinha);
-            printf("0 - Encerrar / Voltar\n");
+             system("cls || clear"); // Limpa a tela
+                
+                // VERIFICA O TIPO DE COMODO
+                printf("\nquantos comodos serao adicionados?\n");
+                scanf("%d",&quantidade);
+                printf("quantos desses comodos sao cozinhas?\n");
+                scanf("%d",&cozinha);
+                printf("0 - Encerrar / Voltar\n");
+        }
 
-            
             // Dados das 4 paredes
-            int qnt_cozinha = cozinha;
             while(c < quantidade) {
                
                 // -------------------------------------------------
-                if (qnt_cozinha!=0){
+                if (cozinha!=0){
                     system("cls || clear");
-                    
-                    sprintf(comodo[c], "cozinha %d", c+1); //sprintf armazena na primeira posição do vetor
-                   
-                    qnt_cozinha--;
+                    strcpy(comodo[c], "cozinha");
+                    // comodo[c] = ("cozinha ");
+                    cozinha--;
                 }
                 else {
-                    system("cls || clear");
-                    printf("\nInsira o nome do comodo %d (ou digite 0 para encerrar): \n", c + 1);
-                    scanf("%s", comodo[c]);
-                    
+                system("cls || clear");
+                printf("\nInsira o nome do comodo %d (ou digite 0 para encerrar): \n", c + 1);
+                scanf("%s", comodo[c]);
+
                     // CONDICAO DE PARADA
                     if(comodo[c][0] == '0') {
                         if(c == 0) {
@@ -69,11 +67,11 @@ int main(void) {
                         }
                     }
                 }
-    
+
                 // Zera o perimetro ANTES de comecar a somar as paredes deste comodo
                 perimetro[c] = 0;
-                
-                
+
+            
                 for (i = 0; i < 4; i++) {
                     system("cls || clear"); 
                     printf("Comodo: %s\n", comodo[c]);
@@ -88,7 +86,7 @@ int main(void) {
                         break; // Se o usuario digitar 0, encerra a leitura das paredes para este comodo
                     }
                 }
-    
+
                 printf("\n");
 
                 if (i == 4 || parede[i] != 0) {
@@ -97,7 +95,7 @@ int main(void) {
                         printf("O tamanho da parede %d e: %.2f \n", j + 1, parede[j]);
                         perimetro[c] += parede[j]; // Vai somando cada parede ao total do comodo atual(SOMA DO PERIMETRO P/ COMODO)
                     }
-                    
+
                     // PERIMETRO
                     printf("\nO perimetro total do comodo '%s' e: %.2f \n", comodo[c], perimetro[c]);
                     c++; // Incrementa para o proximo comodo
@@ -105,10 +103,6 @@ int main(void) {
                     getchar(); // Limpa o buffer do teclado
                     getchar(); // Espera o usuario pressionar enter
                 }
-            }
-
-            if(c > 0) {
-                opcao = 2;
             }
         }
         else if (opcao == 2) {
@@ -128,11 +122,11 @@ int main(void) {
                     //CÁLCULO DE TOMADAS
                     int tomadas_calculadas = 0;
                     
-                    // verifica se a posição do vetor contem uma cozinha
-                    if (i<cozinha) {
+                    // VerifA se a resposta foi 1 (Sim, é cozinha)
+                    if (eh_cozinha[i] == 1) {
                         tomadas_calculadas = (int)(perimetro[i] / 3.5);
                     } 
-                   //calculo para comodos normais
+                    //Calculo para comodos normais
                     else {
                         tomadas_calculadas = (int)(perimetro[i] / 5.0);
                     }
@@ -146,12 +140,12 @@ int main(void) {
                     // -------------------------------------------------
                 }
                 
-                // printf("Eu quero sorvete de flocos.");
                 printf("\npressione enter para voltar ao menu.\n");
                 getchar(); // Limpa o buffer do teclado
                 getchar(); // Espera o usuario pressionar enter
             }
         }
-    }
     return 0;
-}
+    }
+
+    
