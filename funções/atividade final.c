@@ -73,11 +73,10 @@ int main(void) {
                 // Zera o perimetro ANTES de comecar a somar as paredes deste comodo
                 perimetro[c] = 0;
                 
-                
                 for (i = 0; i < 4; i++) {
                     system("cls || clear"); 
                     printf("Comodo: %s\n", comodo[c]);
-                    printf("Digite o tamanho da parede %d (digite '0' para voltar ao 'comodo'): \n", i + 1);
+                    printf("Digite o tamanho da parede %d (digite '0' para voltar ao 'comodo'\n Para editar o nome do comodo, digite o novo nome ): \n", i + 1);
                     scanf("%f", &parede[i]);
                     
                     if (parede[i] < 0) {
